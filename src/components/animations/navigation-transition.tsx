@@ -10,7 +10,6 @@ export function NavigationTransition() {
   const previousPathname = useRef(pathname)
 
   useEffect(() => {
-    console.log("[v0] NavigationTransition mounted for path:", pathname)
 
     // Handle link clicks for smooth transitions
     const handleLinkClick = (e: MouseEvent) => {

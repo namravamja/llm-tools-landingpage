@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/src/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { useEffect, useRef, useState } from "react"
 
 const AlertTriangle = () => (

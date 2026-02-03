@@ -1,13 +1,13 @@
-import { GlassmorphismNav } from "@/src/components/layout/glassmorphism-nav"
-import { HeroSection } from "@/src/components/sections/hero-section"
-import { ProblemSolutionSection } from "@/src/components/sections/problem-solution-section"
-import Aurora from "@/src/components/animations/Aurora"
-import { FeaturesSection } from "@/src/components/sections/features-section"
-import { AITeamSection } from "@/src/components/sections/ai-team-section"
-import { TestimonialsSection } from "@/src/components/sections/testimonials-section"
-import { ROICalculatorSection } from "@/src/components/sections/roi-calculator-section"
-import { CTASection } from "@/src/components/sections/cta-section"
-import { Footer } from "@/src/components/layout/footer"
+import { GlassmorphismNav } from "@/components/layout/glassmorphism-nav"
+import { HeroSection } from "@/components/sections/hero-section"
+import { ProblemSolutionSection } from "@/components/sections/problem-solution-section"
+import Aurora from "@/components/animations/Aurora"
+import { FeaturesSection } from "@/components/sections/features-section"
+import { AITeamSection } from "@/components/sections/ai-team-section"
+import { TestimonialsSection } from "@/components/sections/testimonials-section"
+import { ROICalculatorSection } from "@/components/sections/roi-calculator-section"
+import { CTASection } from "@/components/sections/cta-section"
+import { Footer } from "@/components/layout/footer"
 
 export default function HomePage() {
   return (

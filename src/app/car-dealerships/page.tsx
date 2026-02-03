@@ -1,14 +1,14 @@
 "use client"
 
-import { GlassmorphismNav } from "@/src/components/layout/glassmorphism-nav"
-import Aurora from "@/src/components/animations/Aurora"
-import { Footer } from "@/src/components/layout/footer"
-import { DealershipHeroHeader } from "@/src/components/dealership/dealership-hero-header"
-import { SplitScreenBeforeAfter } from "@/src/components/common/split-screen-before-after"
-import { TyreKickersSection } from "@/src/components/dealership/tyre-kickers-section"
-import { InstagramServiceSection } from "@/src/components/dealership/instagram-service-section"
-import { OmnichannelSection } from "@/src/components/dealership/omnichannel-section"
-import { WhatsAppDemoSection } from "@/src/components/dealership/whatsapp-demo-section"
+import { GlassmorphismNav } from "@/components/layout/glassmorphism-nav"
+import Aurora from "@/components/animations/Aurora"
+import { Footer } from "@/components/layout/footer"
+import { DealershipHeroHeader } from "@/components/dealership/dealership-hero-header"
+import { SplitScreenBeforeAfter } from "@/components/common/split-screen-before-after"
+import { TyreKickersSection } from "@/components/dealership/tyre-kickers-section"
+import { InstagramServiceSection } from "@/components/dealership/instagram-service-section"
+import { OmnichannelSection } from "@/components/dealership/omnichannel-section"
+import { WhatsAppDemoSection } from "@/components/dealership/whatsapp-demo-section"
 
 export default function CarDealershipsPage() {
   return (
