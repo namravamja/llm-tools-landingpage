@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTheme } from 'next-themes'
+import { useState, useEffect } from 'react'
 import {
   LayoutDashboard,
   FolderOpen,
@@ -9,6 +11,12 @@ import {
   Zap,
   Settings,
   X,
+  ChevronLeft,
+  ChevronRight,
+  MessageCircle,
+  Moon,
+  Sun,
+  User,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -48,6 +56,12 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
   const pathname = usePathname()
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <>
@@ -61,51 +75,96 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
 
       <aside
         className={cn(
-          'fixed left-0 top-24 h-[calc(100vh-96px)] w-64 transition-all duration-300 z-30 overflow-y-auto md:translate-x-0',
+          'fixed left-0 top-0 h-screen w-64 transition-all duration-300 z-30 overflow-y-auto md:translate-x-0',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 border-l-0 border-t-0 rounded-r-3xl m-2 mr-0 h-full p-4 md:p-6 space-y-4 flex flex-col">
-          {/* Close button for mobile */}
-          <div className="flex items-center justify-between md:hidden">
-            <h2 className="text-lg font-semibold text-white">Menu</h2>
+        <div className="bg-white/10 backdrop-blur-md border-r border-white/20 h-full flex flex-col">
+          {/* Logo Section */}
+          <div className="flex items-center justify-between px-6 h-14 md:h-16 border-b border-white/20 shrink-0">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                <LayoutDashboard className="h-5 w-5 text-slate-900" />
+              </div>
+              <h1 className="text-lg font-bold text-white">AEO Checker</h1>
+            </div>
             <Button
               variant="ghost"
               size="icon"
               onClick={onClose}
-              className="text-white hover:bg-white/20 rounded-full transition-all duration-300"
+              className="md:hidden text-white hover:bg-white/20 rounded-lg transition-all duration-300"
             >
-              <X className="h-5 w-5" />
+              <ChevronLeft className="h-5 w-5" />
             </Button>
           </div>
 
           {/* Navigation Items */}
-          <nav className="flex-1 space-y-2">
+          <nav className="flex-1 px-4 py-6 space-y-6 overflow-y-auto">
             {navItems.map((item) => {
               const Icon = item.icon
-              const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
+              // For Dashboard, only match exact path. For others, match path and sub-routes
+              const isActive = item.href === '/dashboard' 
+                ? pathname === '/dashboard'
+                : pathname === item.href || pathname.startsWith(item.href + '/')
 
               return (
                 <Link key={item.href} href={item.href} onClick={onClose}>
-                  <Button
+                  <div
                     className={cn(
-                      'w-full justify-start gap-3 transition-all duration-300 rounded-xl text-base md:text-sm',
+                      'group relative w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 cursor-pointer',
                       isActive
-                        ? 'bg-white text-slate-900 font-semibold hover:bg-slate-50'
-                        : 'text-white/80 hover:text-white hover:bg-white/20'
+                        ? 'bg-white/75 backdrop-blur-md shadow-lg'
+                        : 'hover:bg-white/5'
                     )}
                   >
-                    <Icon className="h-5 w-5 flex-shrink-0" />
-                    <span>{item.label}</span>
-                  </Button>
+                    <Icon 
+                      className={cn(
+                        'h-5 w-5 shrink-0 transition-colors',
+                        isActive ? 'text-slate-900' : 'text-white/70 group-hover:text-white/90'
+                      )} 
+                    />
+                    <span 
+                      className={cn(
+                        'text-sm font-medium transition-colors',
+                        isActive ? 'text-slate-900 font-semibold' : 'text-white/70 group-hover:text-white/90'
+                      )}
+                    >
+                      {item.label}
+                    </span>
+                  </div>
                 </Link>
               )
             })}
           </nav>
 
-          {/* Footer */}
-          <div className="border-t border-white/20 pt-4">
-            <p className="text-xs text-white/60 font-medium">Contentlytics v1.0</p>
+          {/* Bottom Options */}
+          <div className="border-t border-white/20 px-4 py-4 shrink-0 space-y-2">
+            {/* Contact */}
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-white/70 hover:bg-white/5 hover:text-white/90 transition-all duration-300">
+              <MessageCircle className="h-5 w-5 shrink-0" />
+              <span className="text-sm font-medium">Contact</span>
+            </button>
+            
+            {/* Dark Theme Toggle */}
+            <button 
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-white/70 hover:bg-white/5 hover:text-white/90 transition-all duration-300"
+            >
+              {!mounted ? (
+                <Moon className="h-5 w-5 shrink-0" />
+              ) : theme === 'dark' ? (
+                <Moon className="h-5 w-5 shrink-0" />
+              ) : (
+                <Sun className="h-5 w-5 shrink-0" />
+              )}
+              <span className="text-sm font-medium">Dark Theme</span>
+            </button>
+            
+            {/* Account */}
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-white/70 hover:bg-white/5 hover:text-white/90 transition-all duration-300">
+              <User className="h-5 w-5 shrink-0" />
+              <span className="text-sm font-medium">Account</span>
+            </button>
           </div>
         </div>
       </aside>

@@ -63,6 +63,9 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     e.preventDefault()
     // Handle authentication logic here
     console.log("Form submitted:", formData)
+    
+    // Redirect to dashboard
+    window.location.href = '/dashboard'
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

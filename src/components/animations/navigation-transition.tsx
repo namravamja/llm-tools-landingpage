@@ -65,7 +65,7 @@ export function NavigationTransition() {
 
   return (
     <div
-      className={`fixed inset-0 bg-black pointer-events-none transition-opacity duration-300 ease-in-out z-[100] ${
+      className={`fixed inset-0 bg-black pointer-events-none transition-opacity duration-300 ease-in-out z-100 ${
         isTransitioning ? "opacity-100" : "opacity-0"
       }`}
     />
