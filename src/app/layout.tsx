@@ -1,34 +1,29 @@
-import React from "react"
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono, Lora } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import type React from "react"
+import type { Metadata } from "next"
+import { Suspense } from "react"
+import "./globals.css"
+import { PageTransition } from "@/src/components/animations/page-transition"
+import { NavigationTransition } from "@/src/components/animations/navigation-transition"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Dancing_Script, Caveat } from "next/font/google"
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
-const _lora = Lora({ subsets: ["latin"] });
+const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  variable: "--font-dancing-script",
+  display: "swap",
+})
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-caveat",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
+  title: "Contentlytics - Enterprise SEO & AEO Intelligence Platform",
+  description:
+    "Powerful web crawler with AI-powered SEO/AEO analysis. Discover every page, optimize for search engines and AI bots, generate Schema.org markup, and gain competitive intelligence.",
+  generator: "v0.app",
 }
 
 export default function RootLayout({
@@ -37,10 +32,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
-        {children}
-        <Analytics />
+    <html lang="en" className="dark">
+      <body className={`font-sans antialiased ${dancingScript.variable} ${caveat.variable}`}>
+        <Suspense fallback={null}>
+          <NavigationTransition />
+          <PageTransition>{children}</PageTransition>
+        </Suspense>
+        <SpeedInsights />
       </body>
     </html>
   )
