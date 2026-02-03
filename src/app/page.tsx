@@ -176,51 +176,46 @@ export default function Home() {
             <div className='absolute inset-0 overflow-hidden'>
               <div className='absolute top-1/3 left-1/2 -translate-x-1/2 w-full h-96 bg-linear-to-b from-transparent via-secondary/20 to-transparent pointer-events-none'></div>
               
-              {/* Top right corner glow */}
-              <div className='absolute -top-32 -right-32 w-96 h-96 pointer-events-none'>
-                <div className='absolute inset-0 bg-gradient-radial from-blue-200/30 via-purple-200/20 to-transparent blur-3xl rounded-full'></div>
-                <svg className='absolute inset-0 w-full h-full opacity-40' viewBox='0 0 400 400'>
-                  <path
-                    d='M 350 50 Q 380 80, 400 120 L 400 0 L 280 0 Q 320 20, 350 50 Z'
-                    fill='url(#topRightGradient)'
-                    className='opacity-60'
-                  />
+              {/* Top right corner neon green glow */}
+              <div className='absolute -top-40 -right-40 w-[600px] h-[600px] pointer-events-none'>
+                <div className='absolute inset-0 bg-gradient-radial from-lime-400/40 via-green-400/20 to-transparent blur-3xl rounded-full animate-pulse'></div>
+                <svg className='absolute inset-0 w-full h-full opacity-50' viewBox='0 0 600 600'>
                   <defs>
-                    <radialGradient id='topRightGradient'>
-                      <stop offset='0%' stopColor='rgb(147, 197, 253)' stopOpacity='0.4' />
-                      <stop offset='50%' stopColor='rgb(196, 181, 253)' stopOpacity='0.2' />
+                    <radialGradient id='neonTopRightGradient' cx='100%' cy='0%'>
+                      <stop offset='0%' stopColor='rgb(163, 230, 53)' stopOpacity='0.6' />
+                      <stop offset='50%' stopColor='rgb(34, 197, 94)' stopOpacity='0.3' />
                       <stop offset='100%' stopColor='transparent' stopOpacity='0' />
                     </radialGradient>
                   </defs>
+                  <circle cx='600' cy='0' r='400' fill='url(#neonTopRightGradient)' />
                 </svg>
               </div>
               
-              {/* Bottom left corner glow */}
-              <div className='absolute -bottom-32 -left-32 w-96 h-96 pointer-events-none'>
-                <div className='absolute inset-0 bg-gradient-radial from-purple-200/30 via-pink-200/20 to-transparent blur-3xl rounded-full'></div>
-                <svg className='absolute inset-0 w-full h-full opacity-40' viewBox='0 0 400 400'>
-                  <path
-                    d='M 50 350 Q 20 380, 0 400 L 0 280 Q 20 320, 50 350 Z'
-                    fill='url(#bottomLeftGradient)'
-                    className='opacity-60'
-                  />
+              {/* Bottom left corner neon green glow */}
+              <div className='absolute -bottom-40 -left-40 w-[600px] h-[600px] pointer-events-none'>
+                <div className='absolute inset-0 bg-gradient-radial from-lime-400/40 via-green-400/20 to-transparent blur-3xl rounded-full animate-pulse'></div>
+                <svg className='absolute inset-0 w-full h-full opacity-50' viewBox='0 0 600 600'>
                   <defs>
-                    <radialGradient id='bottomLeftGradient'>
-                      <stop offset='0%' stopColor='rgb(196, 181, 253)' stopOpacity='0.4' />
-                      <stop offset='50%' stopColor='rgb(251, 207, 232)' stopOpacity='0.2' />
+                    <radialGradient id='neonBottomLeftGradient' cx='0%' cy='100%'>
+                      <stop offset='0%' stopColor='rgb(163, 230, 53)' stopOpacity='0.6' />
+                      <stop offset='50%' stopColor='rgb(34, 197, 94)' stopOpacity='0.3' />
                       <stop offset='100%' stopColor='transparent' stopOpacity='0' />
                     </radialGradient>
                   </defs>
+                  <circle cx='0' cy='600' r='400' fill='url(#neonBottomLeftGradient)' />
                 </svg>
               </div>
             </div>
 
             <div className='relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36'>
               <div className='text-center mb-16'>
-                <h1 className='font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight text-balance mb-8'>
+                <div className='inline-block mb-6 px-4 py-2 rounded-full bg-gradient-to-r from-lime-100 to-green-100 dark:from-lime-900/30 dark:to-green-900/30 border border-lime-200 dark:border-lime-800/50'>
+                  <span className='text-sm font-semibold bg-gradient-to-r from-lime-600 to-green-600 dark:from-lime-300 dark:to-green-300 bg-clip-text text-transparent'>✨ Powered by Advanced AI</span>
+                </div>
+                <h1 className='font-serif text-5xl sm:text-6xl lg:text-7xl font-normal leading-tight text-balance mb-6 bg-gradient-to-r from-foreground via-foreground to-foreground/80 dark:from-white dark:via-white dark:to-white/80 bg-clip-text text-transparent'>
                   Extract website data instantly
                 </h1>
-                <p className='text-base sm:text-lg text-foreground/70 max-w-2xl mx-auto text-balance leading-relaxed'>
+                <p className='text-lg sm:text-xl text-foreground/70 max-w-2xl mx-auto text-balance leading-relaxed'>
                   Streamline your data collection with powerful web crawling automation for every website, tailored to your needs.
                 </p>
               </div>
@@ -232,17 +227,17 @@ export default function Home() {
                       value={url}
                       onChange={(e) => setUrl(e.target.value)}
                       placeholder='Enter website URL or paste HTML content here...'
-                      className='w-full px-6 py-4 rounded-2xl bg-white dark:bg-secondary text-foreground placeholder-foreground/40 border border-border dark:border-border/50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background dark:focus:ring-offset-secondary resize-none font-sans text-sm sm:text-base transition-all shadow-sm'
+                      className='w-full px-6 py-4 rounded-3xl bg-white/95 dark:bg-secondary/50 text-foreground placeholder-foreground/40 border-2 border-border dark:border-border/50 focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-background dark:focus:ring-offset-secondary focus:border-lime-400 resize-none font-sans text-sm sm:text-base transition-all shadow-lg backdrop-blur-sm'
                       rows={8}
                     />
                   </div>
 
                   <div className='flex justify-center relative'>
-                    <div className='absolute inset-0 bg-gradient-radial from-yellow-100/40 via-orange-50/20 to-transparent rounded-full blur-3xl w-80 h-40 mx-auto pointer-events-none'></div>
+                    <div className='absolute inset-0 bg-gradient-to-r from-lime-300/30 via-emerald-300/20 to-cyan-300/20 rounded-full blur-3xl w-96 h-48 mx-auto pointer-events-none'></div>
                     <button
                       type='submit'
                       disabled={isLoading || !url.trim()}
-                      className='relative px-8 py-3 bg-foreground text-background rounded-full font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 shadow-lg shadow-foreground/30 hover:shadow-xl hover:shadow-foreground/40'
+                      className='relative px-10 py-4 bg-gradient-to-r from-lime-400 to-green-500 text-black rounded-full font-semibold hover:shadow-2xl hover:shadow-lime-400/40 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-110 shadow-xl shadow-lime-400/30 hover:brightness-110'
                     >
                       {isLoading ? (
                         <span className='flex items-center justify-center gap-2'>
@@ -260,15 +255,17 @@ export default function Home() {
           </section>
 
           {/* Dashboard Preview */}
-          <section className='bg-linear-to-b from-transparent to-secondary/20 py-20 sm:py-32 border-t border-border/30'>
+          <section className='bg-linear-to-b from-transparent to-secondary/20 py-20 sm:py-32 border-t border-border/30 relative'>
             <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
-              <div className='rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-secondary/30 border border-border/40'>
-                <div className='bg-foreground/95 dark:bg-foreground/20 text-background dark:text-foreground px-6 sm:px-8 py-5 flex items-center justify-between border-b border-border/50'>
+              <div className='rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-secondary/30 border border-border/40 relative group'>
+                <div className='absolute inset-0 bg-gradient-to-r from-lime-400/0 via-lime-400/5 to-green-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl'></div>
+                <div className='bg-gradient-to-r from-foreground/95 to-foreground/90 dark:from-foreground/20 dark:to-foreground/15 text-background dark:text-foreground px-6 sm:px-8 py-5 flex items-center justify-between border-b border-lime-300/30 dark:border-lime-800/20'>
                   <h3 className='font-serif text-lg font-semibold'>Data Visualization Dashboard</h3>
-                  <div className='w-12 h-8 bg-blue-500 rounded-full'></div>
+                  <div className='w-12 h-8 bg-gradient-to-r from-lime-400 to-green-500 rounded-full shadow-lg shadow-lime-400/40'></div>
                 </div>
-                <div className='p-8 sm:p-12 bg-white dark:bg-secondary/10 min-h-96 flex items-center justify-center'>
-                  <div className='text-center text-foreground/50 dark:text-foreground/40'>
+                <div className='p-8 sm:p-12 bg-white dark:bg-secondary/10 min-h-96 flex items-center justify-center relative'>
+                  <div className='absolute inset-0 bg-gradient-radial from-lime-100/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-b-3xl'></div>
+                  <div className='text-center text-foreground/50 dark:text-foreground/40 relative z-10'>
                     <p className='text-lg font-medium'>Dashboard Preview Area</p>
                     <p className='text-sm mt-2'>Analytics and insights will appear here</p>
                   </div>
@@ -323,23 +320,27 @@ export default function Home() {
           {/* Feature Showcase */}
           <section className='py-16 sm:py-24 border-t border-border/50'>
             <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
-              <div className='grid grid-cols-1 lg:grid-cols-2 gap-12'>
+              <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
                 <div className='space-y-8'>
-                  <div>
-                    <h3 className='font-serif text-lg font-semibold mb-3'>Plan your schedules</h3>
+                  <div className='relative pl-6'>
+                    <div className='absolute left-0 top-0 w-1 h-10 bg-gradient-to-b from-lime-400 to-green-500 rounded-full'></div>
+                    <h3 className='font-serif text-lg font-semibold mb-3 text-foreground'>Plan your schedules</h3>
                     <p className='text-foreground/70 text-sm'>Explore your data, build your dashboard, bring your team together.</p>
-                    <div className='mt-4 w-1 h-12 bg-primary'></div>
                   </div>
-                  <div>
-                    <h3 className='font-serif text-lg font-semibold mb-3'>Data to insights in minutes</h3>
+                  <div className='relative pl-6'>
+                    <div className='absolute left-0 top-0 w-1 h-10 bg-gradient-to-b from-lime-400 to-green-500 rounded-full'></div>
+                    <h3 className='font-serif text-lg font-semibold mb-3 text-foreground'>Data to insights in minutes</h3>
                     <p className='text-foreground/70 text-sm'>Transform raw data into actionable insights with powerful analytics tools.</p>
                   </div>
-                  <div>
-                    <h3 className='font-serif text-lg font-semibold mb-3'>Collaborate seamlessly</h3>
+                  <div className='relative pl-6'>
+                    <div className='absolute left-0 top-0 w-1 h-10 bg-gradient-to-b from-lime-400 to-green-500 rounded-full'></div>
+                    <h3 className='font-serif text-lg font-semibold mb-3 text-foreground'>Collaborate seamlessly</h3>
                     <p className='text-foreground/70 text-sm'>Work together in real-time with your team and share insights instantly.</p>
                   </div>
                 </div>
-                <div className='bg-green-100/30 dark:bg-green-900/10 rounded-3xl h-96 border border-green-200/50 dark:border-green-800/30'></div>
+                <div className='bg-gradient-to-br from-lime-100/40 to-green-100/30 dark:from-lime-900/20 dark:to-green-900/10 rounded-3xl h-96 border-2 border-lime-300/50 dark:border-lime-800/30 relative overflow-hidden'>
+                  <div className='absolute inset-0 bg-gradient-radial from-lime-400/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500'></div>
+                </div>
               </div>
             </div>
           </section>
@@ -389,9 +390,9 @@ export default function Home() {
               <div className='grid grid-cols-1 lg:grid-cols-2 gap-12'>
                 <div className='space-y-6'>
                   <div>
-                    <h3 className='font-serif text-xl font-semibold mb-2'>Smart. Simple. Brilliant.</h3>
-                    <p className='text-foreground/70'>Your data is beautifully organized so you see everything clearly without the clutter.</p>
-                    <div className='mt-6 bg-purple-100 dark:bg-purple-900/20 rounded-2xl p-6 h-48'></div>
+                    <h3 className='font-serif text-2xl font-semibold mb-2 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent'>Smart. Simple. Brilliant.</h3>
+                    <p className='text-foreground/70 leading-relaxed'>Your data is beautifully organized so you see everything clearly without the clutter.</p>
+                    <div className='mt-6 bg-gradient-to-br from-lime-100/50 to-green-100/30 dark:from-lime-900/20 dark:to-green-900/10 rounded-3xl p-6 h-48 border border-lime-300/30 dark:border-lime-800/20'></div>
                   </div>
                 </div>
 
@@ -531,26 +532,26 @@ export default function Home() {
                 {pricingPlans.map((plan, idx) => (
                   <div
                     key={idx}
-                    className={`rounded-2xl p-8 transition-all duration-300 border ${
+                    className={`rounded-3xl p-8 transition-all duration-300 border backdrop-blur-sm ${
                       plan.isPrimary
-                        ? 'bg-foreground/95 dark:bg-foreground/15 text-background dark:text-foreground border-foreground/50 scale-100 md:scale-105 shadow-lg'
-                        : 'bg-white dark:bg-foreground/5 text-foreground border-border/40 hover:border-border/60'
+                        ? 'bg-gradient-to-br from-lime-50/80 to-green-50/60 dark:from-lime-900/25 dark:to-green-900/15 border-lime-300/50 dark:border-lime-800/40 scale-100 md:scale-105 shadow-2xl shadow-lime-400/25'
+                        : 'bg-white/90 dark:bg-foreground/5 text-foreground border-border/40 hover:border-lime-300/30 hover:shadow-lg hover:shadow-lime-400/10'
                     }`}
                   >
                     <h3 className='font-serif text-2xl font-semibold mb-3'>{plan.name}</h3>
-                    <p className={`text-sm mb-8 leading-relaxed ${plan.isPrimary ? 'text-background/80 dark:text-foreground/70' : 'text-foreground/70'}`}>
+                    <p className={`text-sm mb-8 leading-relaxed ${plan.isPrimary ? 'text-foreground/80' : 'text-foreground/70'}`}>
                       {plan.description}
                     </p>
                     <div className='mb-10'>
                       <span className='font-serif text-5xl font-semibold'>{plan.price}</span>
-                      <span className={`text-sm ml-2 ${plan.isPrimary ? 'text-background/80 dark:text-foreground/70' : 'text-foreground/70'}`}>
+                      <span className={`text-sm ml-2 ${plan.isPrimary ? 'text-foreground/70' : 'text-foreground/70'}`}>
                         {plan.period}
                       </span>
                     </div>
                     <button
                       className={`w-full py-3 rounded-full font-medium transition-all mb-10 ${
                         plan.isPrimary
-                          ? 'bg-background dark:bg-white text-foreground dark:text-black hover:opacity-90'
+                          ? 'bg-gradient-to-r from-lime-400 to-green-500 text-black hover:shadow-lg hover:shadow-lime-400/30 hover:scale-105'
                           : 'bg-foreground text-background hover:opacity-90'
                       }`}
                     >
@@ -559,8 +560,8 @@ export default function Home() {
                     <div className='space-y-4'>
                       {plan.features.map((feature, i) => (
                         <div key={i} className='flex items-start gap-3'>
-                          <span className={`text-lg shrink-0 ${plan.isPrimary ? 'text-background/80 dark:text-foreground/70' : 'text-foreground/50'}`}>✓</span>
-                          <span className={`text-sm ${plan.isPrimary ? 'text-background/90 dark:text-foreground/80' : 'text-foreground/70'}`}>{feature}</span>
+                          <span className={`text-lg shrink-0 ${plan.isPrimary ? 'text-lime-500' : 'text-foreground/50'}`}>✓</span>
+                          <span className={`text-sm ${plan.isPrimary ? 'text-foreground/90' : 'text-foreground/70'}`}>{feature}</span>
                         </div>
                       ))}
                     </div>

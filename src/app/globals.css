@@ -123,6 +123,26 @@
 }
 
 @layer base {
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+}
+
+@layer base {
   * {
     @apply border-border outline-ring/50;
   }
