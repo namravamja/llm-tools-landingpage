@@ -12,7 +12,7 @@ import {
   useTransform,
 } from "motion/react"
 
-import { cn } from "@/src/lib/utils"
+import { cn } from "@/lib/utils"
 
 const cardVariants = cva("absolute will-change-transform", {
   variants: {

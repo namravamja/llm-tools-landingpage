@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { TestimonialsColumn } from "@/src/components/ui/testimonials-column"
+import { TestimonialsColumn } from "@/components/ui/testimonials-column"
 
 export function TestimonialsSection() {
   const sectionRef = useRef<HTMLElement>(null)
