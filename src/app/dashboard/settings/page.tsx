@@ -1,11 +1,11 @@
 'use client'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Switch } from '@/components/ui/switch'
+import { Lock, Bell, Palette, Shield } from 'lucide-react'
 import {
   Select,
   SelectContent,
@@ -16,67 +16,117 @@ import {
 
 export default function SettingsPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-fade-in">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
-        <p className="text-muted-foreground mt-2">
-          Manage your account and preferences
+        <h1 className="text-3xl md:text-4xl font-bold">Settings & Preferences</h1>
+        <p className="text-muted-foreground mt-2 text-lg">
+          Manage your account, security, and preferences
         </p>
       </div>
 
       <Tabs defaultValue="account" className="space-y-6">
-        <TabsList>
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="preferences">Preferences</TabsTrigger>
-          <TabsTrigger value="security">Security</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 bg-transparent border border-white/10 p-1 h-auto">
+          <TabsTrigger 
+            value="account"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/80 data-[state=active]:to-cyan-400/80 data-[state=active]:text-white rounded-lg border border-white/10 data-[state=active]:border-white/20 transition-all duration-200"
+          >
+            <span className="flex items-center gap-2">
+              <Palette className="h-4 w-4" />
+              <span className="hidden sm:inline">Account</span>
+            </span>
+          </TabsTrigger>
+          <TabsTrigger 
+            value="preferences"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/80 data-[state=active]:to-cyan-400/80 data-[state=active]:text-white rounded-lg border border-white/10 data-[state=active]:border-white/20 transition-all duration-200"
+          >
+            <span className="flex items-center gap-2">
+              <Palette className="h-4 w-4" />
+              <span className="hidden sm:inline">Preferences</span>
+            </span>
+          </TabsTrigger>
+          <TabsTrigger 
+            value="security"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/80 data-[state=active]:to-cyan-400/80 data-[state=active]:text-white rounded-lg border border-white/10 data-[state=active]:border-white/20 transition-all duration-200"
+          >
+            <span className="flex items-center gap-2">
+              <Shield className="h-4 w-4" />
+              <span className="hidden sm:inline">Security</span>
+            </span>
+          </TabsTrigger>
+          <TabsTrigger 
+            value="notifications"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/80 data-[state=active]:to-cyan-400/80 data-[state=active]:text-white rounded-lg border border-white/10 data-[state=active]:border-white/20 transition-all duration-200"
+          >
+            <span className="flex items-center gap-2">
+              <Bell className="h-4 w-4" />
+              <span className="hidden sm:inline">Notifications</span>
+            </span>
+          </TabsTrigger>
         </TabsList>
 
         {/* Account Settings */}
         <TabsContent value="account" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Profile Information</CardTitle>
-              <CardDescription>Update your profile details</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="fullname">Full Name</Label>
-                <Input id="fullname" placeholder="John Doe" defaultValue="John Doe" />
+          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 hover:border-white/20 transition-all duration-300">
+            <h2 className="text-xl font-bold mb-6">Profile Information</h2>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="fullname" className="text-foreground">Full Name</Label>
+                  <Input 
+                    id="fullname" 
+                    placeholder="John Doe" 
+                    defaultValue="John Doe"
+                    className="bg-white/10 border-white/20 hover:border-white/30 focus:border-primary transition-colors"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-foreground">Email Address</Label>
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    placeholder="john@example.com" 
+                    defaultValue="john@example.com"
+                    className="bg-white/10 border-white/20 hover:border-white/30 focus:border-primary transition-colors"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="company" className="text-foreground">Company</Label>
+                  <Input 
+                    id="company" 
+                    placeholder="Your company"
+                    className="bg-white/10 border-white/20 hover:border-white/30 focus:border-primary transition-colors"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="phone" className="text-foreground">Phone Number</Label>
+                  <Input 
+                    id="phone" 
+                    type="tel" 
+                    placeholder="+1 (555) 123-4567"
+                    className="bg-white/10 border-white/20 hover:border-white/30 focus:border-primary transition-colors"
+                  />
+                </div>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email Address</Label>
-                <Input id="email" type="email" placeholder="john@example.com" defaultValue="john@example.com" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="company">Company</Label>
-                <Input id="company" placeholder="Your company" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number</Label>
-                <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" />
-              </div>
-              <Button>Save Changes</Button>
-            </CardContent>
-          </Card>
+              <Button className="bg-gradient-to-r from-primary to-cyan-400 hover:from-primary/90 hover:to-cyan-400/90">
+                Save Changes
+              </Button>
+            </div>
+          </div>
         </TabsContent>
 
         {/* Preferences */}
         <TabsContent value="preferences" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Display Preferences</CardTitle>
-              <CardDescription>Customize how the app looks and feels</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
+          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 hover:border-white/20 transition-all duration-300">
+            <h2 className="text-xl font-bold mb-6">Display Preferences</h2>
+            <div className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="theme">Theme</Label>
+                <Label htmlFor="theme" className="text-foreground">Theme</Label>
                 <Select defaultValue="dark">
-                  <SelectTrigger id="theme">
+                  <SelectTrigger id="theme" className="bg-white/10 border-white/20 hover:border-white/30">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-background/80 backdrop-blur-xl border-white/10">
                     <SelectItem value="light">Light</SelectItem>
                     <SelectItem value="dark">Dark</SelectItem>
                     <SelectItem value="system">System</SelectItem>
@@ -84,12 +134,12 @@ export default function SettingsPage() {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="language">Language</Label>
+                <Label htmlFor="language" className="text-foreground">Language</Label>
                 <Select defaultValue="en">
-                  <SelectTrigger id="language">
+                  <SelectTrigger id="language" className="bg-white/10 border-white/20 hover:border-white/30">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-background/80 backdrop-blur-xl border-white/10">
                     <SelectItem value="en">English</SelectItem>
                     <SelectItem value="es">Spanish</SelectItem>
                     <SelectItem value="fr">French</SelectItem>
@@ -97,100 +147,114 @@ export default function SettingsPage() {
                   </SelectContent>
                 </Select>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="timezone">Timezone</Label>
-                <Select defaultValue="utc">
-                  <SelectTrigger id="timezone">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="utc">UTC</SelectItem>
-                    <SelectItem value="est">Eastern Time (EST)</SelectItem>
-                    <SelectItem value="cst">Central Time (CST)</SelectItem>
-                    <SelectItem value="mst">Mountain Time (MST)</SelectItem>
-                    <SelectItem value="pst">Pacific Time (PST)</SelectItem>
-                  </SelectContent>
-                </Select>
+              <div className="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+                <div>
+                  <p className="font-medium">Compact Mode</p>
+                  <p className="text-sm text-muted-foreground">Reduce spacing in the interface</p>
+                </div>
+                <Switch />
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </TabsContent>
 
         {/* Security */}
         <TabsContent value="security" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Security Settings</CardTitle>
-              <CardDescription>Manage your security and privacy</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
-                <div className="flex gap-2">
-                  <Input id="password" type="password" value="••••••••" disabled className="flex-1" />
-                  <Button variant="outline">Change Password</Button>
-                </div>
+          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 hover:border-white/20 transition-all duration-300">
+            <h2 className="text-xl font-bold mb-6">Security Settings</h2>
+            <div className="space-y-6">
+              <div className="space-y-4">
+                <h3 className="font-semibold flex items-center gap-2">
+                  <Lock className="h-4 w-4" /> Password
+                </h3>
+                <p className="text-sm text-muted-foreground">Last changed 3 months ago</p>
+                <Button variant="outline" className="border-white/20 hover:bg-white/10">
+                  Change Password
+                </Button>
               </div>
 
-              <div className="space-y-4">
-                <h3 className="font-medium">Two-Factor Authentication</h3>
-                <div className="flex items-center justify-between p-3 rounded-lg border border-border">
+              <div className="border-t border-white/10 pt-6">
+                <h3 className="font-semibold flex items-center gap-2 mb-4">
+                  <Shield className="h-4 w-4" /> Two-Factor Authentication
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Enhance your account security with two-factor authentication
+                </p>
+                <div className="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
                   <div>
-                    <p className="font-medium text-sm">Enable 2FA</p>
-                    <p className="text-sm text-muted-foreground">Add an extra layer of security</p>
+                    <p className="font-medium">2FA Status</p>
+                    <p className="text-sm text-green-400">Enabled</p>
                   </div>
-                  <Switch />
+                  <Switch defaultChecked />
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <h3 className="font-medium">Active Sessions</h3>
-                <div className="space-y-2 border border-border rounded-lg divide-y">
+              <div className="border-t border-white/10 pt-6">
+                <h3 className="font-semibold mb-4">Active Sessions</h3>
+                <div className="space-y-3">
                   {[
-                    { device: 'Chrome on Windows', ip: '192.168.1.1', current: true },
-                    { device: 'Safari on iPhone', ip: '192.168.1.2', current: false },
+                    { device: 'Chrome on MacOS', location: 'San Francisco, CA', time: 'Current session' },
+                    { device: 'Safari on iPhone', location: 'San Francisco, CA', time: '2 hours ago' },
                   ].map((session, i) => (
-                    <div key={i} className="flex items-center justify-between p-3">
+                    <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
                       <div>
-                        <p className="text-sm font-medium">{session.device}</p>
-                        <p className="text-xs text-muted-foreground">{session.ip}</p>
+                        <p className="font-medium text-sm">{session.device}</p>
+                        <p className="text-xs text-muted-foreground">{session.location} • {session.time}</p>
                       </div>
-                      {session.current && <span className="text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded">Current</span>}
+                      {session.time !== 'Current session' && (
+                        <Button variant="ghost" size="sm" className="text-destructive hover:bg-destructive/10">
+                          Logout
+                        </Button>
+                      )}
                     </div>
                   ))}
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </TabsContent>
 
         {/* Notifications */}
         <TabsContent value="notifications" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Notification Preferences</CardTitle>
-              <CardDescription>Manage how you receive notifications</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
+          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 hover:border-white/20 transition-all duration-300">
+            <h2 className="text-xl font-bold mb-6">Notification Preferences</h2>
+            <div className="space-y-4">
               {[
-                { name: 'Email Notifications', desc: 'Receive updates via email' },
-                { name: 'Usage Alerts', desc: 'Get notified when usage exceeds limits' },
-                { name: 'Billing Updates', desc: 'Receive billing and payment information' },
-                { name: 'Security Alerts', desc: 'Get alerts for account security events' },
-                { name: 'Product News', desc: 'Stay informed about new features' },
-              ].map((notif) => (
-                <div key={notif.name} className="flex items-center justify-between p-3 rounded-lg border border-border">
+                { title: 'Email Notifications', description: 'Receive email updates about your account' },
+                { title: 'Usage Alerts', description: 'Get notified when you reach usage limits' },
+                { title: 'Security Alerts', description: 'Receive alerts about security events' },
+                { title: 'Product Updates', description: 'Get notified about new features and updates' },
+                { title: 'Weekly Summary', description: 'Receive a weekly summary of your activity' },
+                { title: 'Newsletter', description: 'Subscribe to our newsletter for tips and insights' },
+              ].map((notif, i) => (
+                <div key={i} className="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/10">
                   <div>
-                    <p className="font-medium text-sm">{notif.name}</p>
-                    <p className="text-sm text-muted-foreground">{notif.desc}</p>
+                    <p className="font-medium">{notif.title}</p>
+                    <p className="text-sm text-muted-foreground">{notif.description}</p>
                   </div>
-                  <Switch defaultChecked={notif.name !== 'Product News'} />
+                  <Switch defaultChecked={i < 3} />
                 </div>
               ))}
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </TabsContent>
       </Tabs>
+
+      {/* Danger Zone */}
+      <div className="relative overflow-hidden rounded-xl border border-destructive/20 bg-gradient-to-br from-destructive/10 to-destructive/5 backdrop-blur-xl p-6">
+        <h2 className="text-xl font-bold mb-4 text-destructive">Danger Zone</h2>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="font-medium">Delete Account</p>
+              <p className="text-sm text-muted-foreground">This action cannot be undone</p>
+            </div>
+            <Button variant="destructive" className="hover:bg-destructive/90">
+              Delete Account
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
