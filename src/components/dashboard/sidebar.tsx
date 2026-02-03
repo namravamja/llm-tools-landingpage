@@ -54,34 +54,33 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
       {/* Overlay for mobile */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden z-20"
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm md:hidden z-20"
           onClick={onClose}
         />
       )}
 
       <aside
         className={cn(
-          'fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-white/10 bg-background/40 backdrop-blur-xl transition-all duration-300 z-30 overflow-y-auto',
-          'md:translate-x-0',
-          !isOpen && '-translate-x-full md:translate-x-0'
+          'fixed left-0 top-24 h-[calc(100vh-96px)] w-64 transition-all duration-300 z-30 overflow-y-auto md:translate-x-0',
+          isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <div className="flex flex-col h-full">
+        <div className="bg-white/10 backdrop-blur-md border border-white/20 border-l-0 border-t-0 rounded-r-3xl m-2 mr-0 h-full p-4 md:p-6 space-y-4 flex flex-col">
           {/* Close button for mobile */}
-          <div className="flex items-center justify-between p-4 md:hidden border-b border-white/10">
-            <h2 className="text-lg font-semibold">Menu</h2>
+          <div className="flex items-center justify-between md:hidden">
+            <h2 className="text-lg font-semibold text-white">Menu</h2>
             <Button
               variant="ghost"
               size="icon"
               onClick={onClose}
-              className="hover:bg-white/10"
+              className="text-white hover:bg-white/20 rounded-full transition-all duration-300"
             >
               <X className="h-5 w-5" />
             </Button>
           </div>
 
           {/* Navigation Items */}
-          <nav className="flex-1 px-3 py-6 space-y-2">
+          <nav className="flex-1 space-y-2">
             {navItems.map((item) => {
               const Icon = item.icon
               const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
@@ -89,26 +88,24 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
               return (
                 <Link key={item.href} href={item.href} onClick={onClose}>
                   <Button
-                    variant={isActive ? 'default' : 'ghost'}
                     className={cn(
-                      'w-full justify-start gap-3 transition-all duration-200',
+                      'w-full justify-start gap-3 transition-all duration-300 rounded-xl text-base md:text-sm',
                       isActive
-                        ? 'bg-gradient-to-r from-primary/80 to-primary/60 text-primary-foreground shadow-lg shadow-primary/20 hover:bg-gradient-to-r hover:from-primary hover:to-primary'
-                        : 'text-foreground hover:bg-white/10 hover:text-foreground'
+                        ? 'bg-white text-slate-900 font-semibold hover:bg-slate-50'
+                        : 'text-white/80 hover:text-white hover:bg-white/20'
                     )}
                   >
                     <Icon className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium">{item.label}</span>
+                    <span>{item.label}</span>
                   </Button>
                 </Link>
               )
             })}
           </nav>
 
-          {/* Footer Section */}
-          <div className="border-t border-white/10 p-4 space-y-2">
-            <p className="text-xs text-muted-foreground">Version 1.0</p>
-            <p className="text-xs text-muted-foreground">© 2024 LLM Tools</p>
+          {/* Footer */}
+          <div className="border-t border-white/20 pt-4">
+            <p className="text-xs text-white/60 font-medium">Contentlytics v1.0</p>
           </div>
         </div>
       </aside>

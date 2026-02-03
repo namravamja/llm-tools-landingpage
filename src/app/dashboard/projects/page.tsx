@@ -68,54 +68,59 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 animate-fade-in-hero">
       {/* Header */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-3xl md:text-4xl font-bold">Projects</h1>
-          <p className="text-muted-foreground mt-2">
-            Manage and organize all your projects in one place
+        <div className="space-y-2">
+          <h1 className="text-3xl md:text-5xl font-bold text-white">Projects</h1>
+          <p className="text-white/70 text-lg font-light">
+            Manage and organize all your projects
           </p>
         </div>
-        <Button className="bg-gradient-to-r from-primary to-cyan-400 hover:from-primary/90 hover:to-cyan-400/90 w-full md:w-auto">
+        <Button className="bg-white text-black hover:bg-slate-100 rounded-full font-semibold px-6">
           <Plus className="mr-2 h-4 w-4" /> New Project
         </Button>
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {projects.map((project) => (
           <div
             key={project.id}
-            className="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 hover:border-white/20 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 flex flex-col"
+            className="group rounded-2xl p-6 border border-white/20 bg-white/10 backdrop-blur-md hover:border-white/30 hover:bg-white/15 transition-all duration-500 flex flex-col"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            
-            <div className="relative space-y-4 flex-1">
+            <div className="space-y-4 flex-1">
               {/* Header */}
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <h3 className="font-bold text-lg group-hover:text-primary transition-colors">
+                  <h3 className="font-semibold text-lg text-white group-hover:text-white/90 transition-colors">
                     {project.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <p className="text-sm text-white/60 mt-1">
                     {project.description}
                   </p>
                 </div>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="icon" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      className="opacity-0 group-hover:opacity-100 transition-opacity text-white/60 hover:text-white/80 hover:bg-white/10 rounded-full"
+                    >
                       <MoreVertical className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="bg-background/80 backdrop-blur-xl border-white/10">
-                    <DropdownMenuItem className="cursor-pointer">
+                  <DropdownMenuContent 
+                    align="end" 
+                    className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl"
+                  >
+                    <DropdownMenuItem className="cursor-pointer text-white hover:bg-white/20 focus:bg-white/20">
                       <ExternalLink className="mr-2 h-4 w-4" /> View
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer">
+                    <DropdownMenuItem className="cursor-pointer text-white hover:bg-white/20 focus:bg-white/20">
                       Edit
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="text-destructive cursor-pointer">
+                    <DropdownMenuItem className="text-white/70 cursor-pointer hover:bg-white/20 focus:bg-white/20">
                       <Trash2 className="mr-2 h-4 w-4" /> Delete
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -125,32 +130,32 @@ export default function ProjectsPage() {
               {/* Status & Progress */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-sm">
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                     project.status === 'Active'
-                      ? 'bg-green-500/20 text-green-400'
+                      ? 'bg-white/20 text-white'
                       : project.status === 'In Progress'
-                      ? 'bg-yellow-500/20 text-yellow-400'
-                      : 'bg-gray-500/20 text-gray-400'
+                      ? 'bg-white/15 text-white/80'
+                      : 'bg-white/10 text-white/60'
                   }`}>
                     {project.status}
                   </span>
-                  <span className="text-muted-foreground">{project.progress}%</span>
+                  <span className="text-white/60">{project.progress}%</span>
                 </div>
 
                 <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
                   <div
-                    className="bg-gradient-to-r from-primary to-cyan-400 h-full rounded-full transition-all duration-300"
+                    className="bg-white/60 h-full rounded-full transition-all duration-300"
                     style={{ width: `${project.progress}%` }}
                   />
                 </div>
               </div>
 
               {/* Footer */}
-              <div className="flex items-center justify-between pt-2 border-t border-white/10">
-                <span className="text-xs text-muted-foreground">
+              <div className="flex items-center justify-between pt-2 border-t border-white/20">
+                <span className="text-xs text-white/60">
                   {project.team} team members
                 </span>
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs text-white/60">
                   {project.created}
                 </span>
               </div>
@@ -158,8 +163,7 @@ export default function ProjectsPage() {
 
             {/* Hover Action */}
             <Button
-              variant="ghost"
-              className="w-full mt-4 justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/10"
+              className="w-full mt-4 justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-white text-black hover:bg-slate-100 rounded-full font-semibold"
             >
               Open Project <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

@@ -16,20 +16,20 @@ import {
 
 export default function SettingsPage() {
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 animate-fade-in-hero">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl md:text-4xl font-bold">Settings & Preferences</h1>
-        <p className="text-muted-foreground mt-2 text-lg">
+      <div className="space-y-2">
+        <h1 className="text-3xl md:text-5xl font-bold text-white">Settings & Preferences</h1>
+        <p className="text-white/70 text-lg md:text-xl font-light">
           Manage your account, security, and preferences
         </p>
       </div>
 
       <Tabs defaultValue="account" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 bg-transparent border border-white/10 p-1 h-auto">
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 bg-transparent border border-white/20 p-1 h-auto rounded-xl">
           <TabsTrigger 
             value="account"
-            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/80 data-[state=active]:to-cyan-400/80 data-[state=active]:text-white rounded-lg border border-white/10 data-[state=active]:border-white/20 transition-all duration-200"
+            className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:text-white/70 data-[state=inactive]:hover:text-white rounded-lg border border-white/0 data-[state=active]:border-white/0 transition-all duration-200"
           >
             <span className="flex items-center gap-2">
               <Palette className="h-4 w-4" />
@@ -38,7 +38,7 @@ export default function SettingsPage() {
           </TabsTrigger>
           <TabsTrigger 
             value="preferences"
-            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/80 data-[state=active]:to-cyan-400/80 data-[state=active]:text-white rounded-lg border border-white/10 data-[state=active]:border-white/20 transition-all duration-200"
+            className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:text-white/70 data-[state=inactive]:hover:text-white rounded-lg border border-white/0 data-[state=active]:border-white/0 transition-all duration-200"
           >
             <span className="flex items-center gap-2">
               <Palette className="h-4 w-4" />
@@ -47,7 +47,7 @@ export default function SettingsPage() {
           </TabsTrigger>
           <TabsTrigger 
             value="security"
-            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/80 data-[state=active]:to-cyan-400/80 data-[state=active]:text-white rounded-lg border border-white/10 data-[state=active]:border-white/20 transition-all duration-200"
+            className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:text-white/70 data-[state=inactive]:hover:text-white rounded-lg border border-white/0 data-[state=active]:border-white/0 transition-all duration-200"
           >
             <span className="flex items-center gap-2">
               <Shield className="h-4 w-4" />
@@ -56,7 +56,7 @@ export default function SettingsPage() {
           </TabsTrigger>
           <TabsTrigger 
             value="notifications"
-            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/80 data-[state=active]:to-cyan-400/80 data-[state=active]:text-white rounded-lg border border-white/10 data-[state=active]:border-white/20 transition-all duration-200"
+            className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:text-white/70 data-[state=inactive]:hover:text-white rounded-lg border border-white/0 data-[state=active]:border-white/0 transition-all duration-200"
           >
             <span className="flex items-center gap-2">
               <Bell className="h-4 w-4" />
@@ -67,48 +67,39 @@ export default function SettingsPage() {
 
         {/* Account Settings */}
         <TabsContent value="account" className="space-y-6">
-          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 hover:border-white/20 transition-all duration-300">
-            <h2 className="text-xl font-bold mb-6">Profile Information</h2>
+          <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 md:p-8">
+            <h2 className="text-xl font-bold text-white mb-6">Profile Information</h2>
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="fullname" className="text-foreground">Full Name</Label>
+                  <Label htmlFor="fullname" className="text-white/80 font-semibold">Full Name</Label>
                   <Input 
                     id="fullname" 
                     placeholder="John Doe" 
                     defaultValue="John Doe"
-                    className="bg-white/10 border-white/20 hover:border-white/30 focus:border-primary transition-colors"
+                    className="bg-white/10 border border-white/20 text-white placeholder:text-white/50 hover:border-white/30 focus:border-white/50 transition-colors rounded-lg"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-foreground">Email Address</Label>
+                  <Label htmlFor="email" className="text-white/80 font-semibold">Email Address</Label>
                   <Input 
                     id="email" 
-                    type="email" 
+                    type="email"
                     placeholder="john@example.com" 
                     defaultValue="john@example.com"
-                    className="bg-white/10 border-white/20 hover:border-white/30 focus:border-primary transition-colors"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="company" className="text-foreground">Company</Label>
-                  <Input 
-                    id="company" 
-                    placeholder="Your company"
-                    className="bg-white/10 border-white/20 hover:border-white/30 focus:border-primary transition-colors"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-foreground">Phone Number</Label>
-                  <Input 
-                    id="phone" 
-                    type="tel" 
-                    placeholder="+1 (555) 123-4567"
-                    className="bg-white/10 border-white/20 hover:border-white/30 focus:border-primary transition-colors"
+                    className="bg-white/10 border border-white/20 text-white placeholder:text-white/50 hover:border-white/30 focus:border-white/50 transition-colors rounded-lg"
                   />
                 </div>
               </div>
-              <Button className="bg-gradient-to-r from-primary to-cyan-400 hover:from-primary/90 hover:to-cyan-400/90">
+              <div className="space-y-2">
+                <Label htmlFor="bio" className="text-white/80 font-semibold">Bio</Label>
+                <textarea 
+                  id="bio"
+                  placeholder="Tell us about yourself"
+                  className="w-full bg-white/10 border border-white/20 text-white placeholder:text-white/50 hover:border-white/30 focus:border-white/50 transition-colors rounded-lg p-3 min-h-24"
+                />
+              </div>
+              <Button className="bg-white text-black hover:bg-slate-100 rounded-full font-semibold">
                 Save Changes
               </Button>
             </div>
@@ -117,144 +108,110 @@ export default function SettingsPage() {
 
         {/* Preferences */}
         <TabsContent value="preferences" className="space-y-6">
-          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 hover:border-white/20 transition-all duration-300">
-            <h2 className="text-xl font-bold mb-6">Display Preferences</h2>
+          <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 md:p-8">
+            <h2 className="text-xl font-bold text-white mb-6">Preferences</h2>
             <div className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="theme" className="text-foreground">Theme</Label>
-                <Select defaultValue="dark">
-                  <SelectTrigger id="theme" className="bg-white/10 border-white/20 hover:border-white/30">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-background/80 backdrop-blur-xl border-white/10">
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="language" className="text-foreground">Language</Label>
+              <div>
+                <Label htmlFor="language" className="text-white/80 font-semibold block mb-2">Language</Label>
                 <Select defaultValue="en">
-                  <SelectTrigger id="language" className="bg-white/10 border-white/20 hover:border-white/30">
+                  <SelectTrigger className="bg-white/10 border border-white/20 text-white rounded-lg">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-background/80 backdrop-blur-xl border-white/10">
-                    <SelectItem value="en">English</SelectItem>
-                    <SelectItem value="es">Spanish</SelectItem>
-                    <SelectItem value="fr">French</SelectItem>
-                    <SelectItem value="de">German</SelectItem>
+                  <SelectContent className="bg-white/10 backdrop-blur-md border border-white/20">
+                    <SelectItem value="en" className="text-white">English</SelectItem>
+                    <SelectItem value="es" className="text-white">Spanish</SelectItem>
+                    <SelectItem value="fr" className="text-white">French</SelectItem>
+                    <SelectItem value="de" className="text-white">German</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
-              <div className="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
-                <div>
-                  <p className="font-medium">Compact Mode</p>
-                  <p className="text-sm text-muted-foreground">Reduce spacing in the interface</p>
-                </div>
-                <Switch />
+
+              <div>
+                <Label htmlFor="timezone" className="text-white/80 font-semibold block mb-2">Timezone</Label>
+                <Select defaultValue="utc">
+                  <SelectTrigger className="bg-white/10 border border-white/20 text-white rounded-lg">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white/10 backdrop-blur-md border border-white/20">
+                    <SelectItem value="utc" className="text-white">UTC</SelectItem>
+                    <SelectItem value="est" className="text-white">EST</SelectItem>
+                    <SelectItem value="cst" className="text-white">CST</SelectItem>
+                    <SelectItem value="pst" className="text-white">PST</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
+
+              <Button className="bg-white text-black hover:bg-slate-100 rounded-full font-semibold">
+                Save Preferences
+              </Button>
             </div>
           </div>
         </TabsContent>
 
-        {/* Security */}
+        {/* Security Settings */}
         <TabsContent value="security" className="space-y-6">
-          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 hover:border-white/20 transition-all duration-300">
-            <h2 className="text-xl font-bold mb-6">Security Settings</h2>
+          <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 md:p-8">
+            <h2 className="text-xl font-bold text-white mb-6">Security Settings</h2>
             <div className="space-y-6">
-              <div className="space-y-4">
-                <h3 className="font-semibold flex items-center gap-2">
-                  <Lock className="h-4 w-4" /> Password
-                </h3>
-                <p className="text-sm text-muted-foreground">Last changed 3 months ago</p>
-                <Button variant="outline" className="border-white/20 hover:bg-white/10">
-                  Change Password
-                </Button>
+              <div className="space-y-2">
+                <Label htmlFor="password" className="text-white/80 font-semibold">Current Password</Label>
+                <Input 
+                  id="password"
+                  type="password"
+                  placeholder="••••••••"
+                  className="bg-white/10 border border-white/20 text-white placeholder:text-white/50 hover:border-white/30 focus:border-white/50 transition-colors rounded-lg"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="newpassword" className="text-white/80 font-semibold">New Password</Label>
+                <Input 
+                  id="newpassword"
+                  type="password"
+                  placeholder="••••••••"
+                  className="bg-white/10 border border-white/20 text-white placeholder:text-white/50 hover:border-white/30 focus:border-white/50 transition-colors rounded-lg"
+                />
               </div>
 
-              <div className="border-t border-white/10 pt-6">
-                <h3 className="font-semibold flex items-center gap-2 mb-4">
-                  <Shield className="h-4 w-4" /> Two-Factor Authentication
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Enhance your account security with two-factor authentication
-                </p>
-                <div className="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
-                  <div>
-                    <p className="font-medium">2FA Status</p>
-                    <p className="text-sm text-green-400">Enabled</p>
+              <div className="rounded-xl border border-white/20 bg-white/5 p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Lock className="h-5 w-5 text-white/60" />
+                    <span className="text-white/70">Two-Factor Authentication</span>
                   </div>
-                  <Switch defaultChecked />
+                  <Switch />
                 </div>
               </div>
 
-              <div className="border-t border-white/10 pt-6">
-                <h3 className="font-semibold mb-4">Active Sessions</h3>
-                <div className="space-y-3">
-                  {[
-                    { device: 'Chrome on MacOS', location: 'San Francisco, CA', time: 'Current session' },
-                    { device: 'Safari on iPhone', location: 'San Francisco, CA', time: '2 hours ago' },
-                  ].map((session, i) => (
-                    <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
-                      <div>
-                        <p className="font-medium text-sm">{session.device}</p>
-                        <p className="text-xs text-muted-foreground">{session.location} • {session.time}</p>
-                      </div>
-                      {session.time !== 'Current session' && (
-                        <Button variant="ghost" size="sm" className="text-destructive hover:bg-destructive/10">
-                          Logout
-                        </Button>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <Button className="bg-white text-black hover:bg-slate-100 rounded-full font-semibold">
+                Update Password
+              </Button>
             </div>
           </div>
         </TabsContent>
 
         {/* Notifications */}
         <TabsContent value="notifications" className="space-y-6">
-          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 hover:border-white/20 transition-all duration-300">
-            <h2 className="text-xl font-bold mb-6">Notification Preferences</h2>
+          <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 md:p-8">
+            <h2 className="text-xl font-bold text-white mb-6">Notification Preferences</h2>
             <div className="space-y-4">
               {[
-                { title: 'Email Notifications', description: 'Receive email updates about your account' },
-                { title: 'Usage Alerts', description: 'Get notified when you reach usage limits' },
-                { title: 'Security Alerts', description: 'Receive alerts about security events' },
-                { title: 'Product Updates', description: 'Get notified about new features and updates' },
-                { title: 'Weekly Summary', description: 'Receive a weekly summary of your activity' },
-                { title: 'Newsletter', description: 'Subscribe to our newsletter for tips and insights' },
-              ].map((notif, i) => (
-                <div key={i} className="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/10">
+                { label: 'Email Notifications', desc: 'Receive updates via email' },
+                { label: 'Usage Alerts', desc: 'Get notified when usage reaches 80%' },
+                { label: 'Security Updates', desc: 'Important security notices' },
+                { label: 'Product Updates', desc: 'New features and improvements' },
+              ].map((item, i) => (
+                <div key={i} className="rounded-lg border border-white/20 bg-white/5 p-4 flex items-center justify-between">
                   <div>
-                    <p className="font-medium">{notif.title}</p>
-                    <p className="text-sm text-muted-foreground">{notif.description}</p>
+                    <p className="text-white/90 font-semibold">{item.label}</p>
+                    <p className="text-xs text-white/60">{item.desc}</p>
                   </div>
-                  <Switch defaultChecked={i < 3} />
+                  <Switch defaultChecked={i < 2} />
                 </div>
               ))}
             </div>
           </div>
         </TabsContent>
       </Tabs>
-
-      {/* Danger Zone */}
-      <div className="relative overflow-hidden rounded-xl border border-destructive/20 bg-gradient-to-br from-destructive/10 to-destructive/5 backdrop-blur-xl p-6">
-        <h2 className="text-xl font-bold mb-4 text-destructive">Danger Zone</h2>
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium">Delete Account</p>
-              <p className="text-sm text-muted-foreground">This action cannot be undone</p>
-            </div>
-            <Button variant="destructive" className="hover:bg-destructive/90">
-              Delete Account
-            </Button>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }

@@ -14,7 +14,7 @@ export default function DashboardLayout({
 
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-background/95">
+      <div className="min-h-screen bg-black">
         <Navbar 
           userName="John Doe" 
           userEmail="john@example.com"
@@ -23,8 +23,8 @@ export default function DashboardLayout({
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         
         {/* Main content area - responsive with sidebar */}
-        <main className="pt-16 md:pl-64 transition-all duration-300">
-          <div className="min-h-[calc(100vh-64px)] px-4 md:px-8 py-6 md:py-8">
+        <main className="pt-24 md:pt-32 md:pl-72 transition-all duration-300 px-4 md:px-6">
+          <div className="min-h-screen py-8 md:py-12">
             <div className="max-w-7xl mx-auto">
               {children}
             </div>

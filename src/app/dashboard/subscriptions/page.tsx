@@ -54,46 +54,46 @@ const plans = [
 
 export default function SubscriptionsPage() {
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 animate-fade-in-hero">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl md:text-4xl font-bold">Subscription Plans</h1>
-        <p className="text-muted-foreground mt-2 text-lg">
+      <div className="space-y-2">
+        <h1 className="text-3xl md:text-5xl font-bold text-white">Subscription Plans</h1>
+        <p className="text-white/70 text-lg md:text-xl font-light">
           Choose the perfect plan for your needs. Upgrade or downgrade at any time.
         </p>
       </div>
 
       {/* Current Plan Banner */}
       {plans.some(p => p.current) && (
-        <div className="relative overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-r from-primary/20 via-primary/10 to-cyan-500/10 backdrop-blur-xl p-6 md:p-8">
-          <div className="relative space-y-4">
+        <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 md:p-8">
+          <div className="space-y-4">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <h2 className="text-xl font-bold">Current Plan: Pro</h2>
-                <p className="text-muted-foreground mt-1">Your subscription renews on March 15, 2024</p>
+                <h2 className="text-xl font-bold text-white">Current Plan: Pro</h2>
+                <p className="text-white/60 mt-1">Your subscription renews on March 15, 2024</p>
               </div>
-              <Button variant="outline" className="border-white/20 hover:bg-white/10">
+              <Button className="bg-white text-black hover:bg-slate-100 rounded-full font-semibold px-6">
                 Manage Billing <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
 
             {/* Plan Details Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-white/10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-white/20">
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Billing Cycle</p>
-                <p className="font-semibold">Monthly</p>
+                <p className="text-xs text-white/60 mb-1">Billing Cycle</p>
+                <p className="font-semibold text-white">Monthly</p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Renewal Date</p>
-                <p className="font-semibold">Mar 15, 2024</p>
+                <p className="text-xs text-white/60 mb-1">Renewal Date</p>
+                <p className="font-semibold text-white">Mar 15, 2024</p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Monthly Cost</p>
-                <p className="font-semibold">$29.00</p>
+                <p className="text-xs text-white/60 mb-1">Monthly Cost</p>
+                <p className="font-semibold text-white">$29.00</p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground mb-1">API Usage</p>
-                <p className="font-semibold">45% of quota</p>
+                <p className="text-xs text-white/60 mb-1">API Usage</p>
+                <p className="font-semibold text-white">45% of quota</p>
               </div>
             </div>
           </div>
@@ -101,43 +101,43 @@ export default function SubscriptionsPage() {
       )}
 
       {/* Plans Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         {plans.map((plan, idx) => (
           <div
             key={idx}
-            className={`relative overflow-hidden rounded-xl border backdrop-blur-xl p-6 md:p-8 transition-all duration-300 flex flex-col ${
+            className={`relative rounded-2xl border backdrop-blur-md p-6 md:p-8 transition-all duration-500 flex flex-col ${
               plan.current
-                ? 'border-primary/50 bg-gradient-to-br from-primary/20 via-primary/10 to-cyan-500/10 md:scale-105 md:z-10 shadow-lg shadow-primary/20'
-                : 'border-white/10 bg-gradient-to-br from-white/10 to-white/5 hover:border-white/20 hover:shadow-lg hover:shadow-primary/10'
+                ? 'border-white/30 bg-white/15 md:scale-105 md:z-10 md:shadow-xl md:shadow-white/10'
+                : 'border-white/20 bg-white/10 hover:border-white/30 hover:bg-white/15'
             }`}
           >
             {plan.popular && (
               <div className="absolute top-0 right-0">
-                <div className="bg-gradient-to-r from-primary to-cyan-400 text-primary-foreground text-xs font-bold px-3 py-1 rounded-bl-lg">
+                <div className="bg-white text-black text-xs font-bold px-3 py-1 rounded-bl-2xl">
                   POPULAR
                 </div>
               </div>
             )}
 
             <div className="space-y-2 mb-6">
-              <h3 className="text-2xl font-bold">{plan.name}</h3>
-              <p className="text-muted-foreground text-sm">{plan.description}</p>
+              <h3 className="text-2xl font-bold text-white">{plan.name}</h3>
+              <p className="text-white/60 text-sm">{plan.description}</p>
             </div>
 
             {/* Pricing */}
             <div className="space-y-1 mb-6">
               <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-bold">{plan.price}</span>
-                <span className="text-muted-foreground">{plan.period}</span>
+                <span className="text-4xl font-bold text-white">{plan.price}</span>
+                <span className="text-white/60">{plan.period}</span>
               </div>
             </div>
 
             {/* CTA Button */}
             <Button
-              className={`w-full mb-6 ${
+              className={`w-full mb-6 rounded-full font-semibold ${
                 plan.current
-                  ? 'bg-gradient-to-r from-primary to-cyan-400 hover:from-primary/90 hover:to-cyan-400/90'
-                  : 'bg-white/10 hover:bg-white/20 border border-white/20'
+                  ? 'bg-white text-black hover:bg-slate-100'
+                  : 'bg-white/20 text-white hover:bg-white/30 border border-white/30'
               }`}
             >
               {plan.current ? 'Current Plan' : 'Choose Plan'}
@@ -148,12 +148,12 @@ export default function SubscriptionsPage() {
               {plan.features.map((feature, featureIdx) => (
                 <div key={featureIdx} className="flex items-start gap-3">
                   {feature.included ? (
-                    <Check className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <Check className="h-5 w-5 text-white/80 flex-shrink-0 mt-0.5" />
                   ) : (
-                    <X className="h-5 w-5 text-muted-foreground/50 flex-shrink-0 mt-0.5" />
+                    <X className="h-5 w-5 text-white/40 flex-shrink-0 mt-0.5" />
                   )}
                   <span className={`text-sm ${
-                    feature.included ? 'text-foreground' : 'text-muted-foreground'
+                    feature.included ? 'text-white/90' : 'text-white/60'
                   }`}>
                     {feature.name}
                   </span>
@@ -163,7 +163,7 @@ export default function SubscriptionsPage() {
 
             {/* Contact for Enterprise */}
             {plan.name === 'Enterprise' && (
-              <Button variant="outline" className="w-full mt-6 border-white/20 hover:bg-white/10">
+              <Button className="w-full mt-6 border border-white/20 bg-white/10 text-white hover:bg-white/20 rounded-full font-semibold">
                 Contact Sales
               </Button>
             )}
@@ -173,7 +173,7 @@ export default function SubscriptionsPage() {
 
       {/* FAQ Section */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-white">Frequently Asked Questions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
             {
@@ -195,10 +195,10 @@ export default function SubscriptionsPage() {
           ].map((faq, idx) => (
             <div
               key={idx}
-              className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-4 hover:border-white/20 transition-all duration-300"
+              className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-4 hover:border-white/30 hover:bg-white/15 transition-all duration-300"
             >
-              <h3 className="font-semibold mb-2">{faq.q}</h3>
-              <p className="text-sm text-muted-foreground">{faq.a}</p>
+              <h3 className="font-semibold mb-2 text-white">{faq.q}</h3>
+              <p className="text-sm text-white/60">{faq.a}</p>
             </div>
           ))}
         </div>
